@@ -4,6 +4,8 @@ import { type BreadcrumbItem } from '@/types';
 import { Head, router } from '@inertiajs/vue3';
 import PlaceholderPattern from '../components/PlaceholderPattern.vue';
 import NewsCard from '@/components/NewsCard.vue';
+import AppearanceTabs from '@/components/AppearanceTabs.vue';
+
 import {
   Pagination,
   PaginationContent,

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Models\Category;
 use App\Models\Post;
@@ -30,7 +31,7 @@ Route::get('/news/category/{slug}', [PostController::class, 'byCategory'])->name
 
 Route::get('/news/{slug}', [PostController::class, 'show'])->name('post.show');
 
-Route::post('/news/{id}/comment', [PostController::class, 'comment'])->middleware('auth');
+Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
 
 require __DIR__ . '/settings.php';
 require __DIR__ . '/auth.php';

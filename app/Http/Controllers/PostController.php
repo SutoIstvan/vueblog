@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Post;
 use Inertia\Inertia;
 
@@ -38,20 +39,21 @@ class PostController extends Controller
         ]);
     }
 
-    public function comment(Request $request, int $id)
-    {
-        $request->validate([
-            'content' => 'required|string|max:1000',
-        ]);
+// public function store(Request $request)
+// {
+//     $validated = $request->validate([
+//         'post_id' => 'required|exists:posts,id',
+//         'body' => 'required|string',
+//     ]);
 
-        $post = Post::findOrFail($id);
+//     Comment::create([
+//         'user_id' => auth()->id(),
+//         'post_id' => $validated['post_id'],
+//         'body' => $validated['body'],
+//     ]);
 
-        $post->comments()->create([
-            'user_id' => auth()->id(),
-            'content' => $request->content,
-        ]);
+//     return response()->json(['success' => true]);
+// }
 
-        return back();
-    }
 
 }

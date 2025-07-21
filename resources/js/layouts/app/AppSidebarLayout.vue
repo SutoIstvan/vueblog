@@ -35,6 +35,7 @@ const props = defineProps<{
             <AppSidebarHeader :breadcrumbs="breadcrumbs" />
             <slot />
         </AppContent>
-        <RightSidebar class="hidden lg:block" />
+        <RightSidebar class="hidden lg:block h-screen sticky top-4" />
+
     </AppShell>
 </template>

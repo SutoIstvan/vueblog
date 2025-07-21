@@ -1,13 +1,11 @@
+<script setup lang="ts">
+import AppearanceTabs from '@/components/AppearanceTabs.vue';
+
+</script>
+
 <template>
-  <div class="w-60 shrink-0 space-y-4 mt-2 me-3 ms-1">
-    <!-- <div class="rounded-xl border p-4 dark:border-sidebar-border">
-      <h2 class="text-lg font-semibold mb-2">Популярне</h2>
-      <ul class="text-sm space-y-1">
-        <li><a href="#" class="hover:underline">Новина 1</a></li>
-        <li><a href="#" class="hover:underline">Новина 2</a></li>
-        <li><a href="#" class="hover:underline">Новина 3</a></li>
-      </ul>
-    </div> -->
+  <div class="w-66 shrink-0 space-y-4 mt-2 me-3 ms-1">
+    <AppearanceTabs />
 
     <div class="rounded-xl border p-4 dark:border-sidebar-border">
       <h2 class="text-lg font-semibold mb-2">Tags</h2>

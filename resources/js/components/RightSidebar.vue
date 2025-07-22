@@ -7,6 +7,8 @@ import AppearanceTabs from '@/components/AppearanceTabs.vue';
   <div class="w-66 shrink-0 space-y-4 mt-2 me-3 ms-1">
     <AppearanceTabs />
 
+
+
     <div class="rounded-xl border p-4 dark:border-sidebar-border">
       <h2 class="text-lg font-semibold mb-2">Tags</h2>
       <div class="flex flex-wrap gap-2 text-sm">

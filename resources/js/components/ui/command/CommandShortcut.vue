@@ -8,11 +8,10 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div
-    data-slot="sidebar-group"
-    data-sidebar="group"
-    :class="cn('relative flex w-full min-w-0 flex-col p-2 pt-0', props.class)"
+  <span
+    data-slot="command-shortcut"
+    :class="cn('text-muted-foreground ml-auto text-xs tracking-widest', props.class)"
   >
     <slot />
-  </div>
+  </span>
 </template>

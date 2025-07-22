@@ -34,26 +34,44 @@ class PostController extends Controller
         // $post = Post::with('user')->where('slug', $slug)->firstOrFail();
         $post = Post::with(['user', 'comments.user'])->where('slug', $slug)->firstOrFail();
 
+        $categories = Category::withCount('posts')->get();
+
+
         return Inertia::render('PostPage', [
             'post' => $post,
+            'comments' => $post->comments,
+            'categories' => $categories,
         ]);
     }
 
-// public function store(Request $request)
-// {
-//     $validated = $request->validate([
-//         'post_id' => 'required|exists:posts,id',
-//         'body' => 'required|string',
-//     ]);
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
 
-//     Comment::create([
-//         'user_id' => auth()->id(),
-//         'post_id' => $validated['post_id'],
-//         'body' => $validated['body'],
-//     ]);
+        $posts = Post::where('title', 'like', "%{$query}%")
+            ->orWhere('body', 'like', "%{$query}%")
+            ->with('user')
+            ->take(20)
+            ->get();
 
-//     return response()->json(['success' => true]);
-// }
+        return response()->json($posts);
+    }
+
+    // public function store(Request $request)
+    // {
+    //     $validated = $request->validate([
+    //         'post_id' => 'required|exists:posts,id',
+    //         'body' => 'required|string',
+    //     ]);
+
+    //     Comment::create([
+    //         'user_id' => auth()->id(),
+    //         'post_id' => $validated['post_id'],
+    //         'body' => $validated['body'],
+    //     ]);
+
+    //     return response()->json(['success' => true]);
+    // }
 
 
 }

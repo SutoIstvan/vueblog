@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { ArrowRight } from 'lucide-vue-next'
+import { ArrowRight, MessageCircle } from 'lucide-vue-next'
 import { Link } from '@inertiajs/vue3'
 import { route } from 'ziggy-js'
 import { Card } from '@/components/ui/card'
@@ -19,6 +19,7 @@ interface Post {
   published_at: string
   image: string
   tags?: string[]
+  comments_count?: number // Добавляем количество комментариев
 }
 
 // Получаем props
@@ -44,7 +45,6 @@ const postUrl = computed(() => route('post.show', { slug: props.post.slug }))
 <template>
   <Card class="border-0 bg-transparent shadow-none">
     <div class="grid gap-y-6 sm:grid-cols-10 sm:gap-x-5 sm:gap-y-0 md:items-center md:gap-x-8 lg:gap-x-12">
-
       <!-- Image -->
       <div class="-mt-1 sm:mt-7 sm:col-span-4 relative">
         <Link :href="postUrl" class="block">
@@ -83,6 +83,12 @@ const postUrl = computed(() => route('post.show', { slug: props.post.slug }))
             <span>{{ props.post.user?.name ?? 'Unknown' }}</span>
             <span>•</span>
             <span>{{ formatDate(props.post.published_at) }}</span>
+            <!-- Добавляем количество комментариев -->
+            <span v-if="props.post.comments_count !== undefined">•</span>
+            <div v-if="props.post.comments_count !== undefined" class="flex items-center space-x-1">
+              <MessageCircle class="h-4 w-4" />
+              <span>{{ props.post.comments_count }}</span>
+            </div>
           </div>
         </div>
       </div>

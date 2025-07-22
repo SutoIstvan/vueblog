@@ -5,6 +5,7 @@ import { Head, router } from '@inertiajs/vue3';
 import PlaceholderPattern from '../components/PlaceholderPattern.vue';
 import NewsCard from '@/components/NewsCard.vue';
 import AppearanceTabs from '@/components/AppearanceTabs.vue';
+import PostSearchDialog from '@/components/PostSearchDialog.vue';
 
 import {
   Pagination,
@@ -61,6 +62,9 @@ function goToPage(page: number) {
   <Head title="News" />
 
   <AppLayout :breadcrumbs="breadcrumbs" :categories="categories">
+
+    <PostSearchDialog :posts="posts.data" />
+    
     <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4 overflow-x-auto">
       <div class="hidden sm:grid auto-rows-min gap-4 md:grid-cols-3">
         <div

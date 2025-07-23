@@ -51,10 +51,10 @@ function goToPost(slug: string) {
 
 <template>
   <CommandDialog v-model:open="open">
-    <CommandInput v-model="search" placeholder="Поиск по статьям..." />
+    <CommandInput v-model="search" placeholder="Search articles..." />
     <CommandList>
-      <CommandEmpty>Ничего не найдено</CommandEmpty>
-      <CommandGroup heading="Посты">
+      <CommandEmpty>Nothing found</CommandEmpty>
+      <CommandGroup heading="Posts">
         <CommandItem
           v-for="post in filteredPosts"
           :key="post.id"

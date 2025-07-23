@@ -118,10 +118,10 @@ const breadcrumbs: BreadcrumbItem[] = [
   <Toaster />
 
   <AppLayout :breadcrumbs="breadcrumbs" :categories="categories">
-    <section class="py-15 px-15">
+    <section class="py-15 px-3 md:px-15">
       <div class="container">
         <div class="mx-auto flex max-w-5xl flex-col items-center gap-4 text-center">
-          <h3 class="max-w-3xl text-pretty text-5xl font-semibold md:text-6xl">
+          <h3 class="max-w-3xl text-pretty text-3xl font-semibold md:text-6xl">
             {{ post.title }}
           </h3>
 
@@ -163,7 +163,7 @@ const breadcrumbs: BreadcrumbItem[] = [
       </div>
 
       <!-- Комментарии -->
-      <div class="mt-16 max-w-3xl mx-auto px-4">
+      <div class="mt-16 max-w-3xl mx-auto">
         <h2 class="text-2xl font-bold mb-1">Comments</h2>
         <div class="mb-5 text-md text-gray-500">Here you can leave your comment to the post.</div>
 

@@ -48,16 +48,11 @@ const postUrl = computed(() => route('post.show', { slug: props.post.slug }))
       <!-- Image -->
       <div class="-mt-1 sm:mt-7 sm:col-span-4 relative">
         <Link :href="postUrl" class="block">
-          <div class="aspect-[16/11] overflow-hidden rounded-lg border border-border relative">
-            <Skeleton v-if="loadingImage" class="absolute inset-0" />
-            <img
-              v-show="!loadingImage"
-              :src="props.post.image"
-              :alt="props.post.title"
-              class="h-full w-full object-cover transition-opacity duration-200 hover:opacity-70"
-              @load="onImageLoad"
-            />
-          </div>
+        <div class="aspect-[16/11] overflow-hidden rounded-lg border border-border relative">
+          <Skeleton v-if="loadingImage" class="absolute inset-0" />
+          <img v-show="!loadingImage" :src="props.post.image" :alt="props.post.title"
+            class="h-full w-full object-cover transition-opacity duration-200 hover:opacity-70" @load="onImageLoad" />
+        </div>
         </Link>
       </div>
 
@@ -65,7 +60,7 @@ const postUrl = computed(() => route('post.show', { slug: props.post.slug }))
       <div class="sm:col-span-6">
         <h3 class="text-lg font-semibold sm:text-base md:text-lg lg:text-xl mt-3 md:mt-3">
           <Link :href="postUrl" class="hover:underline">
-            {{ props.post.title }}
+          {{ props.post.title }}
           </Link>
         </h3>
 
@@ -75,13 +70,14 @@ const postUrl = computed(() => route('post.show', { slug: props.post.slug }))
 
         <div class="mt-3 flex justify-between items-center md:mt-3">
           <Link :href="postUrl" class="inline-flex items-center font-semibold hover:underline md:text-base">
-            <span>Read more</span>
-            <ArrowRight class="ml-2 h-4 w-4 transition-transform" />
+          <span>Read more</span>
+          <ArrowRight class="ml-2 h-4 w-4 transition-transform" />
           </Link>
 
           <div class="flex items-center space-x-4 text-sm text-muted-foreground me-4">
-            <span>{{ props.post.user?.name ?? 'Unknown' }}</span>
-            <span>•</span>
+            <span class="hidden md:inline-flex items-center"> {{ props.post.user?.name ?? 'Unknown' }} </span>
+            <span class="hidden md:inline-flex items-center"> • </span>
+
             <span>{{ formatDate(props.post.published_at) }}</span>
             <!-- Добавляем количество комментариев -->
             <span v-if="props.post.comments_count !== undefined">•</span>

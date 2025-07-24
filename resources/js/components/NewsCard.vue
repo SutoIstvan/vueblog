@@ -48,17 +48,19 @@ const postUrl = computed(() => route('post.show', { slug: props.post.slug }))
       <!-- Image -->
       <div class="-mt-1 sm:mt-7 sm:col-span-4 relative">
         <Link :href="postUrl" class="block">
-        <div class="aspect-[16/11] overflow-hidden rounded-lg border border-border relative">
+        <div class="aspect-[16/10] overflow-hidden rounded-lg border border-border relative">
           <Skeleton v-if="loadingImage" class="absolute inset-0" />
           <img v-show="!loadingImage" :src="props.post.image" :alt="props.post.title"
-            class="h-full w-full object-cover transition-opacity duration-200 hover:opacity-70" @load="onImageLoad" />
+            class="h-full w-full object-cover transition-transform duration-300 ease-in-out hover:scale-105"
+            @load="onImageLoad" />
+
         </div>
         </Link>
       </div>
 
       <!-- Text Content -->
       <div class="sm:col-span-6">
-        <h3 class="text-lg font-semibold sm:text-base md:text-lg lg:text-xl mt-3 md:mt-3">
+        <h3 class="text-lg font-semibold sm:text-base md:text-lg lg:text-xl mt-6 md:mt-6">
           <Link :href="postUrl" class="hover:underline">
           {{ props.post.title }}
           </Link>
@@ -69,10 +71,11 @@ const postUrl = computed(() => route('post.show', { slug: props.post.slug }))
         </p>
 
         <div class="mt-3 flex justify-between items-center md:mt-3">
-          <Link :href="postUrl" class="inline-flex items-center font-semibold hover:underline md:text-base">
+          <Link :href="postUrl" class="group inline-flex items-center font-semibold hover:underline md:text-base">
           <span>Read more</span>
-          <ArrowRight class="ml-2 h-4 w-4 transition-transform" />
+          <ArrowRight class="ml-2 h-4 w-4 transform transition-transform duration-200 group-hover:translate-x-1" />
           </Link>
+
 
           <div class="flex items-center space-x-4 text-sm text-muted-foreground me-4">
             <span class="hidden md:inline-flex items-center"> {{ props.post.user?.name ?? 'Unknown' }} </span>

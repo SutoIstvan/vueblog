@@ -11,10 +11,20 @@ class CategoryFactory extends Factory
 
     public function definition()
     {
-        $name = $this->faker->unique()->words(2, true);
+        $name = $this->faker->unique()->randomElement([
+            'Cloud Computing',
+            'AI Machine Learning',
+            'Cybersecurity',
+            'Software Development',
+            'Mobile Development',
+            'Data Science',
+            'Web Technologies',
+            'Blockchain',
+            'Networking',
+        ]);
 
         return [
-            'name' => ucfirst($name),
+            'name' => $name,
             'slug' => Str::slug($name),
             'description' => $this->faker->sentence(),
             'image' => null,
